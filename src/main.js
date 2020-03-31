@@ -1,10 +1,10 @@
 'use strict';
 
 const TASK_COUNT = 3;
-const siteMainElement = document.querySelector('.main');
-const siteHeaderElement = siteMainElement.querySelector('.main__control');
+const siteMainElement = document.querySelector(`.main`);
+const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
-const render = (container, template, place='beforeend') => {
+const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
 
@@ -38,7 +38,7 @@ const createSiteMenuTemplate = () => {
           >STATISTICS</label
         >
       </section>`
-    );
+  );
 };
 
 const createFilterTemplate = () => {
@@ -102,7 +102,7 @@ const createFilterTemplate = () => {
           >Archive <span class="filter__archive-count">115</span></label
         >
       </section>`
-    );
+  );
 };
 
 const createBoardElement = () => {
@@ -116,7 +116,7 @@ const createBoardElement = () => {
 
         <div class="board__tasks"></div>
       </section>`
-    );
+  );
 };
 
 const createEditTaskTemplate = () => {
@@ -318,7 +318,7 @@ const createEditTaskTemplate = () => {
               </div>
           </form>
       </article>`
-    );
+  );
 };
 
 const createTaskTemplate = () => {
@@ -366,21 +366,21 @@ const createTaskTemplate = () => {
               </div>
             </div>
     </article>`
-    );
+  );
 };
 
 const creatLoadMoreButtonTemplate = () => {
   return (
     `<button class="load-more" type="button">load more</button>`
-    );
+  );
 };
 
 render(siteHeaderElement, createSiteMenuTemplate());
 render(siteMainElement, createFilterTemplate());
 render(siteMainElement, createBoardElement());
 
-const boardElement = siteMainElement.querySelector('.board');
-const taskListElement = siteMainElement.querySelector('.board__tasks');
+const boardElement = siteMainElement.querySelector(`.board`);
+const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 
 render(taskListElement, createEditTaskTemplate());
 
