@@ -121,7 +121,7 @@ const createBoardElement = () => {
 
 const createEditTaskTemplate = () => {
   return (
-    ` <article class="card card--edit card--yellow card--repeat">
+    `<article class="card card--edit card--yellow card--repeat">
           <form class="card__form" method="get">
             <div class="card__inner">
               <div class="card__color-bar">
@@ -323,7 +323,7 @@ const createEditTaskTemplate = () => {
 
 const createTaskTemplate = () => {
   return (
-   `<article class="card card--black">
+    `<article class="card card--black">
             <div class="card__form">
               <div class="card__inner">
                 <div class="card__control">
@@ -365,7 +365,7 @@ const createTaskTemplate = () => {
                 </div>
               </div>
             </div>
-    </article>`
+      </article>`
   );
 };
 
