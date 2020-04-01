@@ -101,7 +101,7 @@ const createFilterTemplate = () => (
   </section>`
 );
 
-const createBoardElement = () => (
+const createBoardTemplate = () => (
   `<section class="board container">
     <div class="board__filter-list">
       <a href="#" class="board__filter" data-sort-type="default">SORT BY DEFAULT</a>
@@ -365,7 +365,7 @@ const creatLoadMoreButtonTemplate = () => (
 
 render(siteHeaderElement, createSiteMenuTemplate());
 render(siteMainElement, createFilterTemplate());
-render(siteMainElement, createBoardElement());
+render(siteMainElement, createBoardTemplate());
 
 const boardElement = siteMainElement.querySelector(`.board`);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
