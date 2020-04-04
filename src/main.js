@@ -1,5 +1,3 @@
-'use strict';
-
 import {createMenuTemplate} from './components/menu.js';
 import {createFilterTemplate} from './components/filter.js';
 import {createBoardTemplate} from './components/board.js';
