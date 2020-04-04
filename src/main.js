@@ -7,7 +7,6 @@ import {createEditTaskTemplate} from './components/edit-task.js';
 import {createTaskTemplate} from './components/task.js';
 import {creatLoadMoreButtonTemplate} from './components/load-more-button.js';
 
-
 const TASK_COUNT = 3;
 const mainElement = document.querySelector(`.main`);
 const headerElement = mainElement.querySelector(`.main__control`);
