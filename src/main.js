@@ -16,8 +16,6 @@ const render = (container, template, place = `beforeend`) => {
 };
 
 const filters = generateFilters();
-console.log(filters);
-
 const tasks = generateTasks(TASK_COUNT);
 
 render(headerElement, createMenuTemplate());
@@ -27,7 +25,7 @@ render(mainElement, createBoardTemplate());
 const boardElement = mainElement.querySelector(`.board`);
 const taskListElement = mainElement.querySelector(`.board__tasks`);
 
-render(taskListElement, createEditTaskTemplate());
+render(taskListElement, createEditTaskTemplate(tasks[0]));
 
 for (let i = 0; i < TASK_COUNT; i++) {
   render(taskListElement, createTaskTemplate(tasks[i]));
