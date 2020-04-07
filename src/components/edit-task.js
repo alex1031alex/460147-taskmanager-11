@@ -143,11 +143,27 @@ const createRepeatDaysMarkup = () => (
    </label>`
 );
 
-const createEditTaskTemplate = () => {
+const createEditTaskTemplate = (task) => {
+  // const { description, dueDate, color, repeatingDays } = task;
+
+  const color = `black`;
+  const description = `Example task with default color.`;
+  const date = `23 September`;
+  const time = `16:15`;
+
+  const repeatClass = `card--repeat`;
+  const deadlineClass = `card--deadline`;
+
   const colorsMarkup = createColorsMarkup();
   const repeatDaysMarkup = createRepeatDaysMarkup();
 
-  return `<article class="card card--edit card--yellow card--repeat">
+  return `<article 
+            class="card 
+            card--edit 
+            card--${color} 
+            ${repeatClass} 
+            ${deadlineClass}"
+          >
             <form class="card__form" method="get">
               <div class="card__inner">
                 <div class="card__color-bar">
@@ -161,7 +177,7 @@ const createEditTaskTemplate = () => {
                       class="card__text"
                       placeholder="Start typing your text here..."
                       name="text"
-                    >Here is a card with filled data
+                    >${description}
                     </textarea>
                   </label>
                 </div>
@@ -178,7 +194,7 @@ const createEditTaskTemplate = () => {
                             type="text"
                             placeholder=""
                             name="date"
-                            value="23 September 16:15"
+                            value="${date} ${time}"
                           />
                         </label>
                       </fieldset>
