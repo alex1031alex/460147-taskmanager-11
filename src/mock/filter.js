@@ -1,10 +1,19 @@
-const filterNames = [`all`, `overdue`, `today`, `favorits`, `repeating`, `archive`];
+import { getRandomInteger } from './random.js';
+
+const filterNames = [
+  `all`,
+  `overdue`,
+  `today`,
+  `favorits`,
+  `repeating`,
+  `archive`
+];
 
 const generateFilters = () => {
   return filterNames.map((it) => {
     return {
       name: it,
-      count: 20,
+      count: getRandomInteger(0, 20),
     }
   });
 };

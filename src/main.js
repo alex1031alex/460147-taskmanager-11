@@ -1,9 +1,11 @@
-import {createMenuTemplate} from './components/menu.js';
-import {createFilterTemplate} from './components/filter.js';
-import {createBoardTemplate} from './components/board.js';
-import {createEditTaskTemplate} from './components/edit-task.js';
-import {createTaskTemplate} from './components/task.js';
-import {creatLoadMoreButtonTemplate} from './components/load-more-button.js';
+import { createMenuTemplate } from './components/menu.js';
+import { createFilterTemplate } from './components/filter.js';
+import { createBoardTemplate } from './components/board.js';
+import { createEditTaskTemplate } from './components/edit-task.js';
+import { createTaskTemplate } from './components/task.js';
+import { creatLoadMoreButtonTemplate } from './components/load-more-button.js';
+import { generateTasks } from './mock/task.js';
+import { generateFilters } from './mock/filter.js';
 
 const TASK_COUNT = 3;
 const mainElement = document.querySelector(`.main`);
@@ -13,8 +15,13 @@ const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
 
+const filters = generateFilters();
+console.log(filters);
+
+const tasks = generateTasks(TASK_COUNT);
+
 render(headerElement, createMenuTemplate());
-render(mainElement, createFilterTemplate());
+render(mainElement, createFilterTemplate(filters));
 render(mainElement, createBoardTemplate());
 
 const boardElement = mainElement.querySelector(`.board`);
@@ -23,7 +30,7 @@ const taskListElement = mainElement.querySelector(`.board__tasks`);
 render(taskListElement, createEditTaskTemplate());
 
 for (let i = 0; i < TASK_COUNT; i++) {
-  render(taskListElement, createTaskTemplate());
+  render(taskListElement, createTaskTemplate(tasks[i]));
 }
 
 render(boardElement, creatLoadMoreButtonTemplate());
