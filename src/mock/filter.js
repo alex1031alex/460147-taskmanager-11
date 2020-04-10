@@ -1,19 +1,11 @@
 import { getRandomInteger } from './random.js';
+import { FILTER_NAMES } from './../const.js';
 
 const MIN_TASK_QTY = 0;
 const MAX_TASK_QTY = 20;
 
-const filterNames = [
-  `all`,
-  `overdue`,
-  `today`,
-  `favorits`,
-  `repeating`,
-  `archive`
-];
-
 const generateFilters = () => {
-  return filterNames.map((it) => {
+  return FILTER_NAMES.map((it) => {
     return {
       name: it,
       count: getRandomInteger(MIN_TASK_QTY, MAX_TASK_QTY),
