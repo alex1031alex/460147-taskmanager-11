@@ -1,7 +1,7 @@
 import { getRandomInteger } from './random.js';
 import { COLORS } from './../const.js';
 
-const DefaultRepeatingDays = {
+const defaultRepeatDays = {
   "mo": false,
   "tu": false,
   "we": false,
@@ -11,18 +11,21 @@ const DefaultRepeatingDays = {
   "su": false,
 };
 
+const setRepeatDays = (days) => {
+  const repeatDays = defaultRepeatDays;
+  for (let key in defaultRepeatDays) {
+    if (Math.random() > 0.5) {
+      repeatDays[key] = !repeatDays[key];
+    }
+  }
+
+  return repeatDays;
+};
+
 const descriptionItems = [
   `Изучить теорию`,
   `Сделать домашку`,
-  `Пройти интенсив`,
-  `Сделать уборку`,
-  `Отремонтировать велосипед`,
-  `Купить мебель`,
-  `Повесить полку`,
-  `Завести кота`,
-  `Сбросить 10 кг`,
-  `Взойти на Килиманджаро`,
-  `Заработать миллион`,
+  `Пройти интенсив на соточку`,
 ];
 
 const getRandomArrayItem = (array) => {
@@ -45,8 +48,8 @@ const generateTask = () => {
   return {
     description: getRandomArrayItem(descriptionItems),
     dueDate,
-    repeatDays: Object.assign({}, DefaultRepeatingDays,
-      { "mo": Math.random() > 0.5 }),
+    repeatDays: Object.assign({}, defaultRepeatDays,
+      setRepeatDays(defaultRepeatDays)),
     color: getRandomArrayItem(COLORS),
     isArchive: getRandomInteger(0, 1) < 1,
     isFavorite: getRandomInteger(0, 1) < 1,
