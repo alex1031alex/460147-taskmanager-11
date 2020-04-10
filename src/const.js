@@ -26,4 +26,4 @@ const DAYS = [`mo`, `tu`, `we`, `th`, `fr`, `sa`, `su`];
 
 const COLORS = [`black`, `yellow`, `blue`, `green`, `pink`];
 
-export { MONTH_NAMES, COLORS, DAYS, FILTER_NAMES };
+export {MONTH_NAMES, COLORS, DAYS, FILTER_NAMES};

@@ -1,5 +1,5 @@
-import { MONTH_NAMES, COLORS, DAYS } from './../const.js';
-import { formatTime } from './../utils.js';
+import {MONTH_NAMES, COLORS, DAYS} from './../const.js';
+import {formatTime} from './../utils.js';
 
 const createColorsMarkup = (colors, currentColor) => {
   return colors
@@ -46,7 +46,7 @@ const createRepeatDaysMarkup = (days, repeatDays) => {
 };
 
 const createEditTaskTemplate = (task) => {
-  const { description, dueDate, color, repeatDays } = task;
+  const {description, dueDate, color, repeatDays} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDateShowing = !!dueDate;
@@ -95,17 +95,17 @@ const createEditTaskTemplate = (task) => {
                         </span>
                       </button>
             ${isDateShowing ?
-      `<fieldset class="card__date-deadline">
-                        <label class="card__input-deadline-wrap">
-                          <input
-                            class="card__date"
-                            type="text"
-                            placeholder=""
-                            name="date"
-                            value="${date} ${time}"
-                          />
-                        </label>
-                      </fieldset>` : ``}
+    `<fieldset class="card__date-deadline">
+      <label class="card__input-deadline-wrap">
+        <input
+          class="card__date"
+          type="text"
+          placeholder=""
+          name="date"
+          value="${date} ${time}"
+        />
+      </label>
+    </fieldset>` : ``}
                       <button class="card__repeat-toggle" type="button">
                         repeat:<span class="card__repeat-status">${isRepeatingTask ? `yes` : `no`}</span>
                       </button>
@@ -129,7 +129,7 @@ const createEditTaskTemplate = (task) => {
               </div>
               </div>
             </form>
-          </article>`
+          </article>`;
 };
 
-export { createEditTaskTemplate };
+export {createEditTaskTemplate};

@@ -1,11 +1,11 @@
-import { createMenuTemplate } from './components/menu.js';
-import { createFilterTemplate } from './components/filter.js';
-import { createBoardTemplate } from './components/board.js';
-import { createEditTaskTemplate } from './components/edit-task.js';
-import { createTaskTemplate } from './components/task.js';
-import { creatLoadMoreButtonTemplate } from './components/load-more-button.js';
-import { generateTasks } from './mock/task.js';
-import { generateFilters } from './mock/filter.js';
+import {createMenuTemplate} from './components/menu.js';
+import {createFilterTemplate} from './components/filter.js';
+import {createBoardTemplate} from './components/board.js';
+import {createEditTaskTemplate} from './components/edit-task.js';
+import {createTaskTemplate} from './components/task.js';
+import {creatLoadMoreButtonTemplate} from './components/load-more-button.js';
+import {generateTasks} from './mock/task.js';
+import {generateFilters} from './mock/filter.js';
 
 const TASK_COUNT = 22;
 const INITIAL_TASK_COUNT = 8;

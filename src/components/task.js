@@ -1,8 +1,8 @@
-import { MONTH_NAMES } from './../const.js';
-import { formatTime } from './../utils.js';
+import {MONTH_NAMES} from './../const.js';
+import {formatTime} from './../utils.js';
 
 const createTaskTemplate = (task) => {
-  const { description, dueDate, color, repeatDays, isArchive, isFavorite } = task;
+  const {description, dueDate, color, repeatDays, isArchive, isFavorite} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDateShowing = !!dueDate;
@@ -69,4 +69,4 @@ const createTaskTemplate = (task) => {
           </article>`
   );
 };
-export { createTaskTemplate };
+export {createTaskTemplate};
