@@ -13,6 +13,7 @@ const createTaskTemplate = (task) => {
   const repeatClass = Object.values(repeatDays).some(Boolean) ? `card--repeat` : ``;
   const deadlineClass = isExpired ? `card--deadline` : ``;
   const archiveButtonInactiveClass = isArchive ? `` : `card__btn--disabled`;
+
   const favoriteButtonInactiveClass = isFavorite ? `` : `card__btn--disabled`;
 
   return (
@@ -26,8 +27,8 @@ const createTaskTemplate = (task) => {
                   <button 
                     type="button" 
                     class="card__btn 
-                    card__btn--archive" 
-                    ${archiveButtonInactiveClass}
+                    card__btn--archive
+                    ${archiveButtonInactiveClass}"
                   >
                     archive
                   </button>
