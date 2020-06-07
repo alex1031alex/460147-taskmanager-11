@@ -373,5 +373,7 @@ const createLoadMoreButtonTemplate = () => {
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
+const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+const boardElement = siteMainElement.querySelector(`.board`);
 
 render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
