@@ -22,7 +22,7 @@ render(siteMainElement, createBoardTemplate(), `beforeend`);
 const boardElement = siteMainElement.querySelector(`.board`);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 
-render(taskListElement, createSortingTemplate(), `afterbegin`);
+render(boardElement, createSortingTemplate(), `afterbegin`);
 render(taskListElement, createTaskEditTemplate(), `beforeend`);
 
 for (let i = 0; i < TASK_COUNT; i++) {
