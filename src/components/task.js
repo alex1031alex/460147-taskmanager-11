@@ -1,12 +1,8 @@
 export const createTaskTemplate = (task) => {
-  const {} = task;
+  const {description, dueDate, color, repeatingDays, isArchive, isFavorite} = task;
 
-  const color = `black`;
-  const description = `Example default task with default color`;
   const date = `23 September`;
   const time = `22:22`;
-  const isArchive = true;
-  const isFavorite = false;
 
   const repeatClass = `card--repeat`;
   const deadlineClass = `card--deadline`;
