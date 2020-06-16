@@ -4,8 +4,8 @@ const generateTask = () => {
     dueDate: new Date(),
     repeatingDays: null,
     color: `pink`,
-    isArchive: true,
-    isFavorite: false,
+    isArchive: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
   };
 };
 
