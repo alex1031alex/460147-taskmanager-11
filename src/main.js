@@ -4,7 +4,7 @@ import {createLoadMoreButtonTemplate} from './components/load-more-button.js';
 import {createTaskEditTemplate} from './components/edit-task.js';
 import {createTaskTemplate} from './components/task.js';
 import {createSiteMenuTemplate} from './components/site-menu.js';
-import {createSortingTemplate} from './components/sorting.js';
+import {createSortTemplate} from './components/sort.js';
 import {generateFilters} from './mock/filter.js';
 import {generateTasks} from './mock/task.js';
 
@@ -30,7 +30,7 @@ render(siteMainElement, createBoardTemplate(), `beforeend`);
 const boardElement = siteMainElement.querySelector(`.board`);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 
-render(boardElement, createSortingTemplate(), `afterbegin`);
+render(boardElement, createSortTemplate(), `afterbegin`);
 render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeend`);
 
 let showingTasksCount = SHOWING_TASK_ON_START;
