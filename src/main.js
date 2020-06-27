@@ -7,6 +7,7 @@ import {createSiteMenuTemplate} from './components/site-menu.js';
 import {createSortTemplate} from './components/sort.js';
 import {generateFilters} from './mock/filter.js';
 import {generateTasks} from './mock/task.js';
+import {render, RenderPosition} from "./utils.js";
 
 
 const TASK_COUNT = 22;
