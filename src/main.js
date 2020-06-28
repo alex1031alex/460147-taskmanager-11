@@ -15,7 +15,26 @@ const TASK_COUNT = 22;
 const SHOWING_TASK_ON_START = 8;
 const SHOWING_TASK_ON_BUTTON = 8;
 
-const renderTask = () => {};
+const renderTask = (taskListElement, task) => {
+  const onEditButtonClick = () => {
+    taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
+  };
+
+  const onEditFormSubmit = (evt) => {
+    evt.preventDefault();
+    taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement())
+  };
+
+const taskComponent = new TaskComponent(task);
+const editButton = taskComponent.getElement().querySelector(`form`);
+editButton.addEventListener(`click`, onEditButtonClick);
+
+const taskEditComponent = new TaskEditComponent(task);
+const editForm = taskEditComponent.getElement().querySelector(`form`);
+editForm.addEventListener(`submit`, onEditButtonClick);
+
+render(taskListElement, taskComponent.getElement(), RenderPosition.BEFOREEND);
+};
 
 const renderBoard = () => {};
 
