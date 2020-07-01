@@ -9,7 +9,7 @@ import SiteMenuComponent from './components/site-menu.js';
 import SortComponent from './components/sort.js';
 import {generateTasks} from './mock/task.js';
 import {generateFilters} from './mock/filter.js';
-import {render, RenderPosition} from './utils/render.js';
+import {render, replace, RenderPosition} from './utils/render.js';
 
 // Установим количество задач для отрисовки
 const TASK_COUNT = 22;
@@ -18,11 +18,11 @@ const SHOWING_TASK_BY_BUTTON = 8;
 // Определим функцию для отрисовки задачи
 const renderTask = (taskListElement, task) => {
   const replaceTaskToEdit = () => {
-    taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
+    replace(taskListElement, taskEditComponent.getElement(), taskComponent.getElement());
   };
 
   const replaceEditToTask = () => {
-    taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
+    replace(taskListElement, taskComponent.getElement(), taskEditComponent.getElement());
   };
   // Создадим обработчик нажатия клавиши ESC
   const onEscKeyDown = (evt) => {
