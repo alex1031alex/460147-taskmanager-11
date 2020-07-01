@@ -9,7 +9,7 @@ import SiteMenuComponent from './components/site-menu.js';
 import SortComponent from './components/sort.js';
 import {generateTasks} from './mock/task.js';
 import {generateFilters} from './mock/filter.js';
-import {render, replace, RenderPosition} from './utils/render.js';
+import {render, replace, remove, RenderPosition} from './utils/render.js';
 
 // Установим количество задач для отрисовки
 const TASK_COUNT = 22;
@@ -82,7 +82,7 @@ const renderBoard = (boardComponent, tasks) => {
       .forEach((task) => renderTask(taskListElement, task));
     // Проверяем не пора ли скрыть кнопку
     if (showingTasksCount >= tasks.length) {
-      loadMoreButtonComponent.getElement().remove();
+      remove(loadMoreButtonComponent.getElement());
       loadMoreButtonComponent.removeElement();
     }
   });
