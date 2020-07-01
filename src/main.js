@@ -16,22 +16,37 @@ const SHOWING_TASK_ON_START = 8;
 const SHOWING_TASK_BY_BUTTON = 8;
 // Определим функцию для отрисовки задачи
 const renderTask = (taskListElement, task) => {
-  const onEditButtonClick = () => {
+  const replaceTaskToEdit = () => {
     taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
   };
 
-  const onEditFormSubmit = (evt) => {
-    evt.preventDefault();
+  const replaceEditToTask = () => {
     taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
   };
-  // Создадим компонент, найдём кнопку, навесим обработчик
+  // Создадим обработчик нажатия клавиши ESC
+  const onEscKeyDown = (evt) => {
+    const isEscKey = evt.key === `Escape` || evt.key === `Esc`;
+
+    if (isEscKey) {
+      replaceEditToTask();
+      document.removeEventListener(`keydown`, onEscKeyDown);
+    }
+  };
+  // Создадим компонент задачи, найдём кнопку, навесим обработчик
   const taskComponent = new TaskComponent(task);
   const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
-  editButton.addEventListener(`click`, onEditButtonClick);
-
+  editButton.addEventListener(`click`, () => {
+    replaceTaskToEdit();
+    document.addEventListener(`keydown`, onEscKeyDown);
+  });
+  // Создадим компонент редактируемой задачи, найдём форму, навесим обработчик на событие submit
   const taskEditComponent = new TaskEditComponent(task);
   const editForm = taskEditComponent.getElement().querySelector(`form`);
-  editForm.addEventListener(`submit`, onEditFormSubmit);
+  editForm.addEventListener(`submit`, (evt) => {
+    evt.preventDefault();
+    replaceEditToTask();
+    document.removeEventListener(`keydown`, onEscKeyDown);
+  });
   // Отрисуем задачу
   render(taskListElement, taskComponent.getElement(), RenderPosition.BEFOREEND);
 };
@@ -52,7 +67,7 @@ const renderBoard = (boardComponent, tasks) => {
   render(boardComponent.getElement(), loadMoreButtonComponent.getElement(), RenderPosition.BEFOREEND);
   // Навесим обработчик на кнопку
   loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
-    const prevTasksCount = showingTaskCount;
+    const prevTasksCount = showingTasksCount;
     showingTasksCount = showingTasksCount + SHOWING_TASK_BY_BUTTON;
     // По нажатию кнопки отрисовываем новое количество задач
     tasks.slice(prevTasksCount, showingTasksCount)
