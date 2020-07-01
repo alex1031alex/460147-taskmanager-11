@@ -26,7 +26,7 @@ const renderTask = (taskListElement, task) => {
   };
   // Создадим компонент, найдём кнопку, навесим обработчик
   const taskComponent = new TaskComponent(task);
-  const editButton = taskComponent.getElement().querySelector(`form`);
+  const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
   editButton.addEventListener(`click`, onEditButtonClick);
 
   const taskEditComponent = new TaskEditComponent(task);
@@ -68,8 +68,12 @@ const renderBoard = (boardComponent, tasks) => {
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 // Получим моковые данные
-const filters = generateFilters();
 const tasks = generateTasks(TASK_COUNT);
+const filters = generateFilters();
 // Отрисуем меню и фильтры
 render(siteHeaderElement, new SiteMenuComponent().getElement(), RenderPosition.BEFOREEND);
 render(siteMainElement, new FilterComponent(filters).getElement(), RenderPosition.BEFOREEND);
+// Создаём компонент доски, отрисовываем саму доску. Затем в неё сортировку и задачи.
+const boardComponent = new BoardComponent();
+render(siteMainElement, boardComponent.getElement(), RenderPosition.BEFOREEND);
+renderBoard(boardComponent, tasks);
