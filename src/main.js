@@ -2,7 +2,7 @@ import BoardComponent from './components/board.js';
 import FilterComponent from './components/filter.js';
 import LoadMoreButtonComponent from './components/load-more-button.js';
 import NoTasksComponent from './components/no-tasks.js';
-import TaskEditComponent from './components/edit-task.js';
+import TaskEditComponent from './components/task-edit.js';
 import TaskComponent from './components/task.js';
 import TasksComponent from './components/tasks.js';
 import SiteMenuComponent from './components/site-menu.js';
