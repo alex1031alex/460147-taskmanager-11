@@ -82,8 +82,7 @@ const renderBoard = (boardComponent, tasks) => {
       .forEach((task) => renderTask(taskListElement, task));
     // Проверяем не пора ли скрыть кнопку
     if (showingTasksCount >= tasks.length) {
-      remove(loadMoreButtonComponent.getElement());
-      loadMoreButtonComponent.removeElement();
+      remove(loadMoreButtonComponent);
     }
   });
 };
