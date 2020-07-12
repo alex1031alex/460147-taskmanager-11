@@ -18,11 +18,11 @@ const SHOWING_TASK_BY_BUTTON = 8;
 // Определим функцию для отрисовки задачи
 const renderTask = (taskListElement, task) => {
   const replaceTaskToEdit = () => {
-    replace(taskListElement, taskEditComponent.getElement(), taskComponent.getElement());
+    replace(taskEditComponent, taskComponent);
   };
 
   const replaceEditToTask = () => {
-    replace(taskListElement, taskComponent.getElement(), taskEditComponent.getElement());
+    replace(taskComponent, taskEditComponent);
   };
   // Создадим обработчик нажатия клавиши ESC
   const onEscKeyDown = (evt) => {
