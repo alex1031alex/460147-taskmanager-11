@@ -74,7 +74,7 @@ const renderBoard = (boardComponent, tasks) => {
   const loadMoreButtonComponent = new LoadMoreButtonComponent();
   render(boardComponent.getElement(), loadMoreButtonComponent, RenderPosition.BEFOREEND);
   // Навесим обработчик на кнопку
-  loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
+  loadMoreButtonComponent.setClickHandler(() => {
     const prevTasksCount = showingTasksCount;
     showingTasksCount = showingTasksCount + SHOWING_TASK_BY_BUTTON;
     // По нажатию кнопки отрисовываем новое количество задач
