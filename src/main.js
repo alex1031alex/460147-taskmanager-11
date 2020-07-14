@@ -33,17 +33,16 @@ const renderTask = (taskListElement, task) => {
       document.removeEventListener(`keydown`, onEscKeyDown);
     }
   };
-  // Создадим компонент задачи, найдём кнопку, навесим обработчик
+  // Создадим компоненты задачи и формы редактирования
   const taskComponent = new TaskComponent(task);
-  const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
-  editButton.addEventListener(`click`, () => {
+  const taskEditComponent = new TaskEditComponent(task);
+  // Навесим обработчик на кнопку редактирования
+  taskComponent.setEditButtonClickHandler(() => {
     replaceTaskToEdit();
     document.addEventListener(`keydown`, onEscKeyDown);
   });
-  // Создадим компонент редактируемой задачи, найдём форму, навесим обработчик на событие submit
-  const taskEditComponent = new TaskEditComponent(task);
-  const editForm = taskEditComponent.getElement().querySelector(`form`);
-  editForm.addEventListener(`submit`, (evt) => {
+  // При помощи специального метода навесим обработчик на событие submit
+  taskEditComponent.setSubmitHandler((evt) => {
     evt.preventDefault();
     replaceEditToTask();
     document.removeEventListener(`keydown`, onEscKeyDown);
