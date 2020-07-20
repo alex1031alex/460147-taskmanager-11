@@ -27,22 +27,28 @@ const renderTask = (taskListElement, task) => {
       document.removeEventListener(`keydown`, onEscKeyDown);
     }
   };
-  // Создадим компоненты задачи и формы редактирования
+
   const taskComponent = new TaskComponent(task);
   const taskEditComponent = new TaskEditComponent(task);
-  // Навесим обработчик на кнопку редактирования
+
   taskComponent.setEditButtonClickHandler(() => {
     replaceTaskToEdit();
     document.addEventListener(`keydown`, onEscKeyDown);
   });
-  // При помощи специального метода навесим обработчик на событие submit
+
   taskEditComponent.setSubmitHandler((evt) => {
     evt.preventDefault();
     replaceEditToTask();
     document.removeEventListener(`keydown`, onEscKeyDown);
   });
-  // Отрисуем задачу
+
   render(taskListElement, taskComponent, RenderPosition.BEFOREEND);
+};
+
+const renderTasks = (taskListElement, tasks) => {
+  tasks.forEach((task) => {
+    renderTask(taskListElement, task);
+  });
 };
 
 const getSortedTasks = (tasks, sortType, from, to) => {
@@ -63,6 +69,7 @@ const getSortedTasks = (tasks, sortType, from, to) => {
 
   return sortedTasks.slice(from, to);
 };
+
 
 export default class BoardController {
   constructor(container) {
@@ -86,8 +93,9 @@ export default class BoardController {
         const prevTasksCount = showingTasksCount;
         showingTasksCount = showingTasksCount + SHOWING_TASKS_COUNT_BY_BUTTON;
 
-        tasks.slice(prevTasksCount, showingTasksCount)
-          .forEach((task) => renderTask(taskListElement, task));
+        const sortedTasks = getSortedTasks(tasks, this._sortComponent.getSortType(), prevTasksCount, showingTasksCount);
+
+        renderTasks(taskListElement, sortedTasks);
 
         if (showingTasksCount >= tasks.length) {
           remove(this._loadMoreButtonComponent);
@@ -110,11 +118,7 @@ export default class BoardController {
 
     let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
 
-    tasks.slice(0, showingTasksCount)
-      .forEach((task) => {
-        renderTask(taskListElement, task);
-      });
-
+    renderTasks(taskListElement, tasks.slice(0, showingTasksCount));
     renderLoadMoreButton();
 
     this._sortComponent.setSortTypeChangeHandler((sortType) => {
@@ -124,11 +128,7 @@ export default class BoardController {
 
       taskListElement.innerHTML = ``;
 
-      sortedTasks.slice(0, showingTasksCount)
-        .forEach((task) => {
-          renderTask(taskListElement, task);
-        });
-
+      renderTasks(taskListElement, sortedTasks);
       renderLoadMoreButton();
     });
   }
